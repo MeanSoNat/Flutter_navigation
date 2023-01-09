@@ -19,7 +19,36 @@ class TeamDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(person.name)),
+      appBar: AppBar(
+          title: Text(person.name),
+          leading: ElevatedButton(
+            onPressed: () => {Navigator.of(context).pop()},
+            // ignore: sort_child_properties_last
+            child: Icon(
+              Icons.arrow_back_ios_new_rounded,
+              size: 30,
+              color: Colors.white,
+              shadows: <Shadow>[
+                Shadow(
+                    color: Colors.black12,
+                    blurRadius: 10.0,
+                    offset: Offset(-1, 2))
+              ],
+            ),
+            style: ElevatedButton.styleFrom(
+              shape: CircleBorder(),
+              padding: EdgeInsets.all(5),
+              fixedSize: Size(5, 5),
+            ),
+          )
+
+          // IconButton(
+          //   icon: Icon(Icons.arrow_back_ios_new_outlined),
+          //   color: Colors.white,
+          //   onPressed: () => Navigator.of(context).pop(),
+          //   iconSize: 20.0,
+          // ),
+          ),
       body: Padding(
           padding: const EdgeInsets.all(5.0),
           child: Center(
@@ -27,10 +56,13 @@ class TeamDetail extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Padding(padding: const EdgeInsets.all(8.0)),
+                // this write for set circle avatar user
                 CircleAvatar(
                   radius: 100,
                   backgroundImage: NetworkImage(person.imgurl),
                 ),
+
+                // this padding is write for write student id
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
@@ -40,6 +72,8 @@ class TeamDetail extends StatelessWidget {
                         TextStyle(fontSize: 22.0, fontStyle: FontStyle.normal),
                   ),
                 ),
+
+                // This padding is for write nickname
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
@@ -49,6 +83,9 @@ class TeamDetail extends StatelessWidget {
                         TextStyle(fontSize: 18.0, fontStyle: FontStyle.normal),
                   ),
                 ),
+
+                // I set this Padding to write about facebook profile and make it
+                // to route to facebook profile
                 Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: ElevatedButton.icon(
@@ -57,7 +94,7 @@ class TeamDetail extends StatelessWidget {
                           openBrowser(facebook);
                         },
                         icon: Icon(Icons.facebook_rounded),
-                        label: Text("Facebook"))),
+                        label: Text(person.name))),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
